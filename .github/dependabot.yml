@@ -1,4 +1,4 @@
-# Weekly dependency updates, merged by themselves once CI is green (pull-request.yml). Commit prefixes decide releases:
+# Weekly dependency updates, merged by themselves once CI is green (automation.yml). Commit prefixes decide releases:
 # Gradle updates (the app's libraries and the machinery's plugins) ship as patch releases (fix); the workflows' (the
 # machinery's reusable workflows and the actions) don't (ci).
 version: 2
