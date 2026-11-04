@@ -41,9 +41,10 @@ holds almost nothing but the app. Read README.md first.
 
 ## Hard rules
 
-1. **Conventional Commits** for every commit (`feat:`, `fix:`, `refactor:`, `build:`, `ci:`, `docs:`, `test:`) and
-   every pull request title, 100 characters at most. `feat` and `fix` release a new version. A pull request's title
-   names the whole change, e.g. `feat(home): count backwards too`: squash-merged, it becomes the commit.
+1. **Conventional Commits** for every commit (`feat:`, `fix:`, `refactor:`, `build:`, `ci:`, `docs:`, `test:`), 100
+   characters at most, and every pull request title, 90 at most (squash-merging adds " (#123)" to it). `feat` and
+   `fix` release a new version. A pull request's title names the whole change, e.g.
+   `feat(home): count backwards too`: squash-merged, it becomes the commit.
 2. **Never put an issue number in a commit message** (`Closes #12`, `Fixes #12` or a bare `#12`): commit messages
    become the stores' "What's new". The pull request's description closes the issue.
 3. **Licences.** Runtime dependencies must be Apache-2.0, MIT, BSD or CC0 (Licensee checks). The stores' own libraries
