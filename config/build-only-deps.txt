@@ -1,0 +1,6 @@
+# Dependencies used only to build or test the app, never shipped: their updates merge as build(deps), which releases
+# nothing. Regular expressions of group:artifact, one a line.
+^io\.kotest:
+^org\.robolectric:
+^junit:
+^androidx\.test

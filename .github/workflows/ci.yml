@@ -1,0 +1,38 @@
+name: CI
+
+# The whole pipeline (app-machinery's ci.yml): the checks and the Android build of every pull request and push, the iOS
+# build where it is worth it (pushes to main that touch code, pull requests labelled `ios`, runs started by hand), then,
+# on main, the release, the Google Play upload and the store listing's graphics. The default branch's ruleset requires
+# "ci / Conventional commits", "ci / Repository rules" and "ci / Build and check".
+# "Run workflow" builds the chosen branch, iOS included; with "store-listing" it only replaces the listing's graphics.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      store-listing:
+        description: Only replace the Google Play listing's graphics (on main)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  ci:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    uses: ldeluigi/app-machinery/.github/workflows/ci.yml@main
+    secrets: inherit
+    with:
+      about: a Kotlin Multiplatform app
+      store-listing: ${{ inputs.store-listing == true }}

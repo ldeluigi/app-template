@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="count">Conta</string>
+    <string name="reset">Azzera</string>
+    <plurals name="counted">
+        <item quantity="one">Contato %1$d volta</item>
+        <item quantity="many">Contato %1$d di volte</item>
+        <item quantity="other">Contato %1$d volte</item>
+    </plurals>
+    <string name="about">Informazioni</string>
+    <string name="back">Indietro</string>
+    <string name="version">Versione %1$s</string>
+    <string name="update_available">È pronta una nuova versione.</string>
+    <string name="update_downloading">Download della nuova versione…</string>
+    <string name="update_ready">La nuova versione è stata scaricata.</string>
+    <string name="update_later">Più tardi</string>
+    <string name="update_now">Aggiorna</string>
+    <string name="update_restart">Riavvia per aggiornare</string>
+</resources>

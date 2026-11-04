@@ -1,0 +1,2 @@
+# Names this app must never mention, one regular expression a line, checked in every file and commit message by CI.
+# Write them with character classes, like n[a]me, so that this list does not contain the names itself.
