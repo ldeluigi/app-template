@@ -11,7 +11,8 @@ holds almost nothing but the app. Read README.md first.
 ## Layout
 
 - `core/`: the app's pure Kotlin logic, the same on every platform, tested on the JVM (and iOS on a Mac). No UI, no
-  platform APIs. Most logic and tests belong here.
+  platform APIs: common code only, never a `jvmMain` or `iosMain` of its own (files, compression and sensors belong to
+  `composeApp`'s platform layer). Most logic and tests belong here.
 - `composeApp/`: the app itself, as a library shared by both platforms.
   - `src/commonMain/kotlin`: screens (`ui/<screen>/`: a `…Screen` composable and its `…ViewModel`), navigation
     (`App.kt`), the platform seam (`Platform.kt`), dependency injection (`AppContainer.kt`), data (`data/`), store
