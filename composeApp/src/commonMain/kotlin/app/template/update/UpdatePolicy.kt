@@ -13,8 +13,9 @@ enum class UpdatePrompt {
 }
 
 /**
- * Decides how to offer an update. The release pipeline sets the update priority from the release type:
- * major = 5, feature = 3, fix or dependency bump = 1. Stores without priorities have it told from the version numbers.
+ * Decides how to offer an update. The release pipeline sets the update priority from the release type: major = 5,
+ * feature = 3, fix = 2, maintenance only (dependency bumps, say) = 1. Google Play gives the highest priority of the
+ * versions not installed yet. Stores without priorities have it told from the version numbers.
  */
 object UpdatePolicy {
     /** The priority the release pipeline gives a major release. */
@@ -23,14 +24,17 @@ object UpdatePolicy {
     /** The priority the release pipeline gives a feature release. */
     const val FEATURE_PRIORITY = 3
 
-    /** The priority the release pipeline gives a fix or a dependency bump. */
-    const val FIX_PRIORITY = 1
+    /** The priority the release pipeline gives a release that fixes something users notice. */
+    const val FIX_PRIORITY = 2
+
+    /** The priority the release pipeline gives a release that only does maintenance, like dependency bumps. */
+    const val MAINTENANCE_PRIORITY = 1
 
     /** Priority from which an update is forced (major releases). */
     const val IMMEDIATE_PRIORITY = 4
 
-    /** Priority from which a banner is shown straight away (feature releases). */
-    const val BANNER_PRIORITY = 3
+    /** Priority from which a banner is shown straight away (feature and fix releases). */
+    const val BANNER_PRIORITY = 2
 
     /** Days after which even a low-priority update is offered with a banner. */
     const val QUIET_DAYS = 14
@@ -60,7 +64,10 @@ object UpdatePolicy {
         return if (wanted == UpdatePrompt.FLEXIBLE && snoozed) UpdatePrompt.NONE else wanted
     }
 
-    /** The priority the release pipeline gave [newest], told from its version number and the [installed] one's. */
+    /**
+     * The priority the release pipeline gave [newest], told from its version number and the [installed] one's. A
+     * version number can't tell a fix from maintenance, so a newer patch counts as maintenance and stays quiet.
+     */
     fun priority(
         installed: String,
         newest: String,
@@ -70,7 +77,7 @@ object UpdatePolicy {
         return when {
             newMajor != major -> MAJOR_PRIORITY
             newFeature != feature -> FEATURE_PRIORITY
-            else -> FIX_PRIORITY
+            else -> MAINTENANCE_PRIORITY
         }
     }
 
