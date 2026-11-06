@@ -31,7 +31,7 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
-    uses: ldeluigi/app-machinery/.github/workflows/ci.yml@86d0a3acd6fb5813770e0477297cc09d36a7ace3 # v1.4.0
+    uses: ldeluigi/app-machinery/.github/workflows/ci.yml@ef20b32ac64a4b47c750155c064b4c8a9dd40de7 # v1.4.1
     secrets: inherit
     with:
       about: a Kotlin Multiplatform app
