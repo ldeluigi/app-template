@@ -12,7 +12,7 @@ on:
     workflows: [CI]
     types: [completed]
   issues:
-    types: [opened, labeled, unlabeled]
+    types: [opened, labeled, unlabeled, unassigned]
   issue_comment:
     types: [created]
   pull_request_review_comment:
