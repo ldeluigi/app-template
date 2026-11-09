@@ -5,8 +5,11 @@ pluginManagement {
     val local = settings.providers.gradleProperty("machinery.local").orNull
     if (local != null) includeBuild("$local/plugins")
     repositories {
-        maven(settings.providers.gradleProperty("machinery.repository").get()) {
-            content { includeGroupByRegex("""machinery(\..*)?|app\.machinery""") }
+        // The machinery's plugins come from its repository and from no other: none of the public ones below can pass
+        // an artifact of its own off as one of them.
+        exclusiveContent {
+            forRepository { maven(settings.providers.gradleProperty("machinery.repository").get()) }
+            filter { includeGroupByRegex("""machinery(\..*)?|app\.machinery""") }
         }
         google()
         mavenCentral()
