@@ -9,9 +9,7 @@
       "Bash(git switch:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(gh pr view:*)",
       "Bash(gh pr checks:*)",
-      "Bash(gh issue view:*)",
       "Bash(gh run view:*)"
     ]
   }
