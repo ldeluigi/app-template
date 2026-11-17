@@ -1,0 +1,3 @@
+# Licences this app may ship besides the ones the machinery always allows (Apache-2.0, MIT, BSD, CC0 and Google Play's
+# in-app updates), checked by Licensee in ./gradlew check. One a line: an SPDX identifier (like MPL-2.0) or the URL of a
+# licence that has none (like a store's terms). Only the owner changes this list: agents' commits to it aren't pushed.
