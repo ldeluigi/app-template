@@ -14,11 +14,11 @@ on:
   issues:
     types: [opened, labeled, unlabeled, unassigned]
   issue_comment:
-    types: [created]
+    types: [created, edited]
   pull_request_review_comment:
-    types: [created]
+    types: [created, edited]
   pull_request_review:
-    types: [submitted]
+    types: [submitted, edited]
   schedule:
     - cron: "30 8 * * 1"
     - cron: "41 4 1 * *"
@@ -40,7 +40,7 @@ jobs:
       contents: read
       issues: write
       pull-requests: read
-    uses: ldeluigi/app-machinery/.github/workflows/automation.yml@b836ff92dd88d4b78252035c70ced0a98e9e8115 # v1.8.1
+    uses: ldeluigi/app-machinery/.github/workflows/automation.yml@fbc620341b4d97e63cf25f5fd5dd6199c4aad3a4 # v1.10.0
     secrets: inherit
     with:
       task: ${{ inputs.task }}
