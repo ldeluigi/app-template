@@ -40,7 +40,7 @@ jobs:
       contents: read
       issues: write
       pull-requests: read
-    uses: ldeluigi/app-machinery/.github/workflows/automation.yml@49068741a556876089a4d211fb9a59277f0b6f2d # v1.11.1
+    uses: ldeluigi/app-machinery/.github/workflows/automation.yml@91356206a0c8ecf3eca251494adfc7fac6053d0d # v1.11.2
     secrets: inherit
     with:
       task: ${{ inputs.task }}
