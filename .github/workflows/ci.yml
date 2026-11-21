@@ -31,8 +31,9 @@ jobs:
       issues: write
       pull-requests: write
       id-token: write
-    uses: ldeluigi/app-machinery/.github/workflows/ci.yml@fbc620341b4d97e63cf25f5fd5dd6199c4aad3a4 # v1.10.0
+    uses: ldeluigi/app-machinery/.github/workflows/ci.yml@a59b5f326c32845daa561c0773bf0dca7ba4ac89 # v1.11.0
     secrets: inherit
     with:
       about: a Kotlin Multiplatform app
       store-listing: ${{ inputs.store-listing == true }}
+      privacy-page: docs/privacy-policy.md
