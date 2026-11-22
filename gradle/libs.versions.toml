@@ -3,7 +3,7 @@
 # moves them all, tested together.
 
 [versions]
-machinery = "1.11.2"
+machinery = "1.14.0"
 activity-compose = "1.13.0"
 navigation-compose = "2.10.0"
 lifecycle = "2.11.0"
