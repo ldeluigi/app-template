@@ -39,6 +39,9 @@ holds almost nothing but the app. Read README.md first.
   goes to `core`, with tests.
 - Ads, purchases and premium features go through `monetization/` (`Entitlements`, `Shop`, `Ads`); the app is `Free`
   until a store or an ad network is plugged in, which only the owner decides (rule 3).
+- Nothing on screen jumps. What appears, goes away or changes size while a screen is shown either keeps its place, so
+  nothing around it moves (it keeps its room and fades), or opens and gives back its room with an animation, so
+  everything around it glides (`AnimatedVisibility`, `AnimatedContent`, `animateContentSize`), as `UpdateBanner` does.
 
 ## Hard rules
 
