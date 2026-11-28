@@ -42,6 +42,11 @@ holds almost nothing but the app. Read README.md first.
 - Nothing on screen jumps. What appears, goes away or changes size while a screen is shown either keeps its place, so
   nothing around it moves (it keeps its room and fades), or opens and gives back its room with an animation, so
   everything around it glides (`AnimatedVisibility`, `AnimatedContent`, `animateContentSize`), as `UpdateBanner` does.
+- Every frame is on time. What moves follows the frames, never a timer (`withFrameNanos`, animations), and is read
+  while drawing or laying out (`graphicsLayer {}`, `drawBehind`, `offset {}`), not while composing; what redraws on
+  every frame has a layer of its own and allocates nothing (no new `Path` or `Brush` per frame: `drawWithCache`). Work
+  that takes more than a few milliseconds (files, parsing, searching big lists, system queries) runs off the main
+  thread, and a screen gets its data before its transition ends, not after.
 
 ## Hard rules
 
