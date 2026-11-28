@@ -6,7 +6,8 @@ holds almost nothing but the app. Read README.md first.
 
 ## The app
 
-<!-- One paragraph: what the app does and for whom. scripts/make-it-yours.sh leaves this for you to write. -->
+<!-- One paragraph: what the app does and for whom, and the voice of its texts: who they speak to and the words
+     every language keeps for the app's things. scripts/make-it-yours.sh leaves this for you to write. -->
 
 ## Layout
 
@@ -46,7 +47,8 @@ holds almost nothing but the app. Read README.md first.
   while drawing or laying out (`graphicsLayer {}`, `drawBehind`, `offset {}`), not while composing; what redraws on
   every frame has a layer of its own and allocates nothing (no new `Path` or `Brush` per frame: `drawWithCache`). Work
   that takes more than a few milliseconds (files, parsing, searching big lists, system queries) runs off the main
-  thread, and a screen gets its data before its transition ends, not after.
+  thread, and a screen gets its data before its transition ends, not after. The `smooth-ui` skill
+  (`.claude/skills/smooth-ui/`) has the details, and the list to check a screen against before a pull request.
 
 ## Hard rules
 
@@ -63,7 +65,8 @@ holds almost nothing but the app. Read README.md first.
 4. **Never weaken quality gates**: don't disable or relax tests, detekt, ktlint, Android Lint, Licensee or the
    translation check, and don't lower their thresholds.
 5. **Every text people see goes in `strings.xml`, in every language** the app has (`values-*`): the build fails on a
-   missing text, plural form or argument.
+   missing text, plural form or argument. Each reads as a native speaker would say it, never word for word: the
+   `native-texts` skill (`.claude/skills/native-texts/`) says how, with the stores' limits.
 6. Don't edit `.github/` (your token can't push workflow changes), the agents' own settings (`.claude/settings.json`,
    `.mcp.json`) or `config/licences.txt` (commits that change them aren't pushed), signing, the rest of `config/` or
    the store listing's texts; open an issue for the owner instead.
